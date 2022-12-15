@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Logo from "../UI/Logo/Logo";
 import Title from "../UI/Title/Title";
 import Warring from "../UI/Warring/Warring";
@@ -6,8 +6,7 @@ import FormEmail from "./FormEmail/FormEmail";
 import FormPassword from "./FormPassword/FormPassword";
 import FormUsername from "./FormUsername/FormUsername";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../hook/redux";
-import { autorizationSlice } from "../../../store/reducers/AutorizationSlice";
+import { useAppSelector } from "../../../hook/redux";
 
 const WraperSignUp = () => {
   const { formEmail, formUsername, formPassword } = useAppSelector(
@@ -16,8 +15,6 @@ const WraperSignUp = () => {
   const { title, warring } = useAppSelector(
     (state) => state.autorizationReducer.signUp
   );
-
-
 
   return (
     <div className="h-auto w-full ml-auto mr-auto">
