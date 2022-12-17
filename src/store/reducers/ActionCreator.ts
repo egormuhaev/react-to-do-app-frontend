@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "../../config/config";
+import { routes } from "../../config/routes";
 import { requersJsonSignIn, requestJsonSignUp } from "../../models/IRequests";
 import { responseJsonSignIn, responseJsonSignUp } from "../../models/IResponse";
 
@@ -9,7 +10,7 @@ export const fetchSignInUsers = createAsyncThunk(
   async (req: requersJsonSignIn, thuncAPI) => {
     try {
       const response = await axios.post<requersJsonSignIn>(
-        `${config.BASE_API}/api_1/get_user/`,
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GET_USER}`,
         req
       );
       return response.data as responseJsonSignIn;
@@ -24,7 +25,7 @@ export const fetchSignUpNewUsers = createAsyncThunk(
   async (req: requestJsonSignUp, thuncAPI) => {
     try {
       const response = await axios.post<requestJsonSignUp>(
-        `${config.BASE_API}/api_3/db/create_new_user`,
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.CREATE_NEW_USER}`,
         req
       );
       return response.data as responseJsonSignUp;

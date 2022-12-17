@@ -3,6 +3,7 @@ import React from "react";
 import { config } from "../../../../config/config";
 import { useAppDispatch, useAppSelector } from "../../../../hook/redux";
 import { autorizationSlice } from "../../../../store/reducers/AutorizationSlice";
+import { routes } from "../../../../config/routes";
 
 const FormPassword = () => {
   const { password, confirmPassword } = useAppSelector(
@@ -59,10 +60,13 @@ const FormPassword = () => {
           onClick={() => {
             if (password && confirmPassword) {
               axios
-                .post(`${config.BASE_API}/api_2/validation/password/sign_up`, {
-                  password,
-                  confirmPassword,
-                })
+                .post(
+                  `${config.BASE_API}${routes.BASE_RUOTE}${routes.VALIDATION_PASSWORD}`,
+                  {
+                    password,
+                    confirmPassword,
+                  }
+                )
                 .then((res) => {
                   if (res.data.statusValidation) {
                     dispatch(setStatusUsernameSingUp());

@@ -5,6 +5,7 @@ import { config } from "../../../../config/config";
 import { fetchSignUpNewUsers } from "../../../../store/reducers/ActionCreator";
 import { requestJsonSignUp } from "../../../../models/IRequests";
 import axios from "axios";
+import { routes } from "../../../../config/routes";
 
 const FormUsername = () => {
   const { username } = useAppSelector(
@@ -41,7 +42,7 @@ const FormUsername = () => {
         Example email: @egormuhaev
       </div>
 
-      <div className=" h-[32px] w-[270px] flex flex-row justify-center mt-auto mb-[10px]">
+      <div className="h-[32px] w-[270px] flex flex-row justify-center mt-auto mb-[10px]">
         <button
           className="h-[32px] w-[134px] bg-[#1c4fe8] font-semibold text-white rounded-md hover:bg-[#1c73e8] ml-0 mr-auto"
           onClick={() => {
@@ -55,9 +56,12 @@ const FormUsername = () => {
           onClick={() => {
             if (!status) {
               axios
-                .post(`${config.BASE_API}/api_2/validation/username/sign_up`, {
-                  username,
-                })
+                .post(
+                  `${config.BASE_API}${routes.BASE_RUOTE}${routes.VALIDATION_USERNAME}`,
+                  {
+                    username,
+                  }
+                )
                 .then((res) => {
                   if (res.data.statusValidation) {
                     let newUserData: requestJsonSignUp = {

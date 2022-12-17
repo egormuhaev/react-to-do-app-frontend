@@ -3,9 +3,10 @@ import { useAppDispatch, useAppSelector } from "../../../../hook/redux";
 import { autorizationSlice } from "../../../../store/reducers/AutorizationSlice";
 import axios from "axios";
 import { config } from "../../../../config/config";
+import { routes } from "../../../../config/routes";
 
 function FormEmail() {
-  const { email, status, success } = useAppSelector(
+  const { email } = useAppSelector(
     (state) => state.autorizationReducer.signUp.registration.formEmail
   );
   const { setStatusPasswordSingUp, setEmailValue, setWarringSignUp } =
@@ -35,9 +36,12 @@ function FormEmail() {
         onClick={() => {
           if (email) {
             axios
-              .post(`${config.BASE_API}/api_2/validation/email/sign_up`, {
-                email,
-              })
+              .post(
+                `${config.BASE_API}${routes.BASE_RUOTE}${routes.VALIDATION_EMAIL}`,
+                {
+                  email,
+                }
+              )
               .then((res) => {
                 console.log(res.data.statusValidation);
                 if (res.data.statusValidation) {
