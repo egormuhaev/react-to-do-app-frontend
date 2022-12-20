@@ -32,7 +32,7 @@ function FormEmail() {
       </div>
 
       <button
-        className="h-[32px] w-[270px] bg-[#1c4fe8] font-semibold text-white rounded-md hover:bg-[#1c73e8] mt-auto mb-[10px]"
+        className="h-[32px] w-[270px] bg-[#3182B9] font-semibold text-white rounded-md hover:bg-[#1c73e8] mt-auto mb-[10px]"
         onClick={() => {
           if (email) {
             axios

@@ -48,7 +48,7 @@ const FormPassword = () => {
 
       <div className=" h-[32px] w-[270px] flex flex-row justify-center mt-auto mb-[10px]">
         <button
-          className="h-[32px] w-[134px] bg-[#1c4fe8] font-semibold text-white rounded-md hover:bg-[#1c73e8] ml-0 mr-auto"
+          className="h-[32px] w-[134px] bg-[#3182B9] font-semibold text-white rounded-md hover:bg-[#1c73e8] ml-0 mr-auto"
           onClick={() => {
             dispatch(setStatusEmailSingUp());
           }}
@@ -56,7 +56,7 @@ const FormPassword = () => {
           Back
         </button>
         <button
-          className="h-[32px] w-[134px] bg-[#1c4fe8] font-semibold text-white rounded-md hover:bg-[#1c73e8] ml-auto mr-0"
+          className="h-[32px] w-[134px] bg-[#3182B9] font-semibold text-white rounded-md hover:bg-[#1c73e8] ml-auto mr-0"
           onClick={() => {
             if (password && confirmPassword) {
               axios

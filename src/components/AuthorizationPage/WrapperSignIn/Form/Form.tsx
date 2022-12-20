@@ -43,7 +43,7 @@ function Form() {
       />
 
       <button
-        className="h-[32px] w-[270px] bg-[#1c4fe8] font-semibold text-white mt-[15px] rounded-md hover:bg-[#1c73e8]"
+        className="h-[32px] w-[270px] bg-[#3182B9] font-semibold text-white mt-[15px] rounded-md hover:bg-[#1c73e8]"
         onClick={() => {
           if (
             !isLoading.status &&
