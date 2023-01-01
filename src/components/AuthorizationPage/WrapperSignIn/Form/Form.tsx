@@ -3,14 +3,23 @@ import { useAppDispatch, useAppSelector } from "../../../../hook/redux";
 import { autorizationSlice } from "../../../../store/reducers/AutorizationSlice";
 import { fetchSignInUsers } from "../../../../store/reducers/ActionCreator";
 import { requersJsonSignIn } from "../../../../models/IRequests";
+import { useNavigate } from "react-router-dom";
 
 function Form() {
   const { inputForm, isLoading } = useAppSelector(
     (state) => state.autorizationReducer.signIn
   );
+  const { successUserData } = useAppSelector(
+    (state) => state.autorizationReducer
+  );
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { setUsernameOrEmailValueSignIn, setPasswordSignIn } =
     autorizationSlice.actions;
+
+  if (successUserData.id) {
+    navigate("/load");
+  }
 
   return (
     <div className="h-[200px] w-[308px] text-center flex flex-col justify-center items-center border-[1px] border-[#dadbdb] rounded-md">

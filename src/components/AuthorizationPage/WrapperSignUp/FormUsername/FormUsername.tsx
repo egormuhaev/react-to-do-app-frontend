@@ -6,6 +6,7 @@ import { fetchSignUpNewUsers } from "../../../../store/reducers/ActionCreator";
 import { requestJsonSignUp } from "../../../../models/IRequests";
 import axios from "axios";
 import { routes } from "../../../../config/routes";
+import { useNavigate } from "react-router-dom";
 
 const FormUsername = () => {
   const { username } = useAppSelector(
@@ -20,9 +21,17 @@ const FormUsername = () => {
   const { password } = useAppSelector(
     (state) => state.autorizationReducer.signUp.registration.formPassword
   );
+  const { successUserData } = useAppSelector(
+    (state) => state.autorizationReducer
+  );
   const { setUsernameValue, setStatusPasswordSingUp, setWarringSignUp } =
     autorizationSlice.actions;
   const dispatch = useAppDispatch();
+  const navigation = useNavigate();
+
+  if (successUserData.id) {
+    navigation("/load");
+  }
 
   return (
     <div className="h-[200px] w-[308px] text-center flex flex-col justify-start items-center border-[1px] border-[#dadbdb] rounded-md">
