@@ -27,30 +27,32 @@ const LoadData = () => {
   const { id } = useAppSelector<IMainUserData>(
     (state) => state.autorizationReducer.successUserData
   );
-  try {
-    axios
-      .get(`${config.BASE_API}${routes.BASE_RUOTE}/user/${id}`)
-      .then((res) => {
-        setUD({
-          id: res.data.id,
-          email: res.data.email,
-          username: res.data.username,
-          password: res.data.password,
+  if (!loadDataStatus) {
+    try {
+      axios
+        .get(`${config.BASE_API}${routes.BASE_RUOTE}/user/${id}`)
+        .then((res) => {
+          setUD({
+            id: res.data.id,
+            email: res.data.email,
+            username: res.data.username,
+            password: res.data.password,
+          });
+          if (ud.email !== "" && ud.password !== "" && ud.username !== "") {
+            dispatch(
+              setUserData({
+                id,
+                email: ud.email,
+                username: ud.username,
+                password: ud.password,
+              })
+            );
+            setLoadDataStatus(true);
+          }
         });
-        if (ud.email !== "" && ud.password !== "" && ud.username !== "") {
-          dispatch(
-            setUserData({
-              id,
-              email: ud.email,
-              username: ud.username,
-              password: ud.password,
-            })
-          );
-          setLoadDataStatus(true);
-        }
-      });
-  } catch (e) {
-    console.log(e);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
