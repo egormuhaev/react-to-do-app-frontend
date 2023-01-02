@@ -1,6 +1,17 @@
-
 .sidebarWrapper {
     background-color: #3182B9;
     width: 250px;
     height: 100vh;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sideMenuContainerItem {
+    width: 100%;
+    height: auto;
 }

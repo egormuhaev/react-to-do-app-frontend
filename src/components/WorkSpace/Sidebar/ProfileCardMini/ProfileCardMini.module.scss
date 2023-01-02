@@ -1,0 +1,50 @@
+.wrapper {
+    height: 80px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.leftSide {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.rightSide {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.avatar {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background: linear-gradient(#FFEB70, #F02262);
+    border: 2px white solid;
+}
+
+.avatar>.font {
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.prifileInfo>.font {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.prifileInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80px;
+    width: 130px;
+}
