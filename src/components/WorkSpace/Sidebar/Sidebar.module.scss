@@ -2,6 +2,7 @@
     background-color: #3182B9;
     width: 250px;
     height: 100vh;
+    user-select: none;
 }
 
 .center {
@@ -14,4 +15,40 @@
 .sideMenuContainerItem {
     width: 100%;
     height: auto;
+}
+
+.sideMenuContainerItem>button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    width: 90%;
+    height: 40px;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.sideMenuContainerItem>button:hover {
+    width: 95%;
+    height: 40px;
+    background-color: #fff;
+    color: #3182B9;
+}
+
+.sideMenuContainerItem>button.font {
+    font-weight: bold;
+    padding-left: 10px;
+    text-align: start;
+    font-size: 15px;
+}
+
+.groupText {
+    height: 40px;
+    width: 100%;
+    color: #fff;
+}
+
+.groupText>p{
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: 30px;
 }

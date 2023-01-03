@@ -9,11 +9,16 @@ const SideBar = () => {
         <ProfileCardMini />
       </div>
       <div className={`${style.sideMenuContainerItem} ${style.center}`}>
-        <button></button>
-        <button></button>
-        <button></button>
-        <button></button>
-        <button></button>
+        <button className={style.font}>Today</button>
+        <button className={style.font}>Important</button>
+        <button className={style.font}>All</button>
+        <button className={style.font}>Planned</button>
+        <button className={style.font}>Tasks</button>
+      </div>
+      <div className={`${style.sideMenuContainerItem} ${style.center}`}>
+        <div className={style.groupText}>
+          <p>Groups</p>
+        </div>
       </div>
     </div>
   );
