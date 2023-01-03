@@ -47,6 +47,10 @@ const LoadData = () => {
                 password: ud.password,
               })
             );
+            sessionStorage.setItem("id_to_do_app", ud.id as string);
+            sessionStorage.setItem("email_to_do_app", ud.email);
+            sessionStorage.setItem("username_to_do_app", ud.username);
+            sessionStorage.setItem("password_to_do_app", ud.password);
             setLoadDataStatus(true);
           }
         });
