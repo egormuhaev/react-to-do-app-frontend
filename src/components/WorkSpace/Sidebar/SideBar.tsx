@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Sidebar.module.scss";
 import ProfileCardMini from "./ProfileCardMini/ProfileCardMini";
+import Groups from "./Groups/Groups";
 
 const SideBar = () => {
   return (
@@ -19,6 +20,9 @@ const SideBar = () => {
         <div className={style.groupText}>
           <p>Groups</p>
         </div>
+      </div>
+      <div className={`${style.sideMenuContainerItem} ${style.center}`}>
+        <Groups />
       </div>
     </div>
   );
