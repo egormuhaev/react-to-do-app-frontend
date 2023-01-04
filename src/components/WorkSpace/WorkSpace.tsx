@@ -13,15 +13,15 @@ const WorkSpace = () => {
     if (id === "") {
       dispatch(
         setUserData({
-          id: sessionStorage.getItem("id_to_do_app") as string | number,
-          email: sessionStorage.getItem("email_to_do_app") as string,
-          username: sessionStorage.getItem("username_to_do_app") as string,
-          password: sessionStorage.getItem("password_to_do_app") as string,
+          id: localStorage.getItem("id_to_do_app") as string | number,
+          email: localStorage.getItem("email_to_do_app") as string,
+          username: localStorage.getItem("username_to_do_app") as string,
+          password: localStorage.getItem("password_to_do_app") as string,
         })
       );
       dispatch(
         fetchAllGroupsByUser(
-          sessionStorage.getItem("id_to_do_app") as string | number
+          localStorage.getItem("id_to_do_app") as string | number
         )
       );
     } else {

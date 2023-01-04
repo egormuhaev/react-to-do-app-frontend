@@ -8,3 +8,10 @@
     align-items: center;
 }
 
+.wrapper::-webkit-scrollbar {
+    width: 2px;               /* ширина всей полосы прокрутки */
+  }
+  
+.wrapper::-webkit-scrollbar-track {
+    background: none;        /* цвет зоны отслеживания */
+  }

@@ -1,8 +1,13 @@
 import React from "react";
 import Button from "./UI/Button/Button";
 import CatComponent from "./CatComponent/CatComponent";
+import { useNavigate } from "react-router-dom";
 
 const PreviewPage = () => {
+  const navigation = useNavigate();
+  if (localStorage.getItem("id_to_do_app")) {
+    navigation("/load");
+  }
   return (
     <div>
       <header className="h-[100px] w-full  flex flex-row justify-start shadow-xl">

@@ -27,10 +27,15 @@ const LoadData = () => {
   const { id } = useAppSelector<IMainUserData>(
     (state) => state.autorizationReducer.successUserData
   );
+
   if (!loadDataStatus) {
     try {
       axios
-        .get(`${config.BASE_API}${routes.BASE_RUOTE}/user/${id}`)
+        .get(
+          `${config.BASE_API}${routes.BASE_RUOTE}/user/${
+            id ? id : sessionStorage.setItem("id_to_do_app", ud.id as string)
+          }`
+        )
         .then((res) => {
           setUD({
             id: res.data.id,
@@ -47,10 +52,10 @@ const LoadData = () => {
                 password: ud.password,
               })
             );
-            sessionStorage.setItem("id_to_do_app", ud.id as string);
-            sessionStorage.setItem("email_to_do_app", ud.email);
-            sessionStorage.setItem("username_to_do_app", ud.username);
-            sessionStorage.setItem("password_to_do_app", ud.password);
+            localStorage.setItem("id_to_do_app", ud.id as string);
+            localStorage.setItem("email_to_do_app", ud.email);
+            localStorage.setItem("username_to_do_app", ud.username);
+            localStorage.setItem("password_to_do_app", ud.password);
             setLoadDataStatus(true);
           }
         });

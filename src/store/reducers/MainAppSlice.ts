@@ -22,6 +22,9 @@ export const mainAppSlice = createSlice({
   name: "mainAppSlice",
   initialState,
   reducers: {
+    setSelectGroup(state, action: PayloadAction<string | number>) {
+      state.group.selectGroup = action.payload;
+    },
     setUserData(state, action: PayloadAction<IMainUserData>) {
       state.userData = action.payload;
     },
