@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMainUserData } from "../../models/IMainUserData";
 import { IStateMainApp } from "../../models/IStateMainApp";
-import { fetchAllGroupsByUser } from "./ActionCreator";
+import { fetchAllGroupsByUser, fetchCreateNewGroup } from "./ActionCreator";
 import { IGroup } from "../../models/IStateMainApp";
+import { responseJsonCreateNewGroup } from "../../models/IResponse";
 
 const initialState: IStateMainApp = {
   userData: {
@@ -30,6 +31,8 @@ const initialState: IStateMainApp = {
     createGroup: {
       newGroupName: "",
       status: false,
+      errorStatus: false,
+      errorMessage: "",
     },
     selectGroup: -1,
     groupAll: [],
@@ -48,6 +51,8 @@ export const mainAppSlice = createSlice({
       state.group.createGroup.status = action.payload;
       if (!action.payload) {
         state.group.createGroup.newGroupName = "";
+        state.group.createGroup.errorStatus = false;
+        state.group.createGroup.errorMessage = "";
       }
     },
     setSelectGroup(state, action: PayloadAction<string | number>) {
@@ -69,6 +74,41 @@ export const mainAppSlice = createSlice({
     },
   },
   extraReducers: {
+    [fetchCreateNewGroup.fulfilled.type]: (
+      state,
+      action: PayloadAction<responseJsonCreateNewGroup>
+    ) => {
+      const newGroup: responseJsonCreateNewGroup = action.payload;
+      state.group.groupAll.unshift({
+        id: newGroup.id,
+        name: newGroup.name as string | undefined,
+        user_id: newGroup.userId,
+      });
+      state.group.selectGroup = newGroup.id;
+      state.header.text = newGroup.name as string;
+      state.activeSection = {
+        today: false,
+        important: false,
+        all: false,
+        planned: false,
+        tasks: false,
+        group: true,
+        dashboard: false,
+      };
+      state.group.createGroup.status = false;
+      state.group.createGroup.newGroupName = "";
+    },
+    [fetchCreateNewGroup.pending.type]: () => {},
+    [fetchCreateNewGroup.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {
+      console.log(1);
+      console.log(action.payload);
+      state.group.createGroup.errorMessage = action.payload;
+      state.group.createGroup.errorStatus = true;
+    },
+
     [fetchAllGroupsByUser.fulfilled.type]: (
       state,
       action: PayloadAction<IGroup[]>

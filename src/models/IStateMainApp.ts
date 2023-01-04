@@ -43,6 +43,8 @@ export interface IStateMainApp {
     createGroup: {
       newGroupName: string;
       status: boolean;
+      errorStatus: boolean;
+      errorMessage: string;
     };
     selectGroup: string | number;
     groupAll: IGroup[];

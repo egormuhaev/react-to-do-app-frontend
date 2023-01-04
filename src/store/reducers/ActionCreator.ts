@@ -2,8 +2,16 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { config } from "../../config/config";
 import { routes } from "../../config/routes";
-import { requersJsonSignIn, requestJsonSignUp } from "../../models/IRequests";
-import { responseJsonSignIn, responseJsonSignUp } from "../../models/IResponse";
+import {
+  requersJsonSignIn,
+  requestJsonSignUp,
+  requestJsonCreateNewGroup,
+} from "../../models/IRequests";
+import {
+  responseJsonSignIn,
+  responseJsonSignUp,
+  responseJsonCreateNewGroup,
+} from "../../models/IResponse";
 
 export const fetchSignInUsers = createAsyncThunk(
   "data/fetchSignIn",
@@ -49,13 +57,15 @@ export const fetchAllGroupsByUser = createAsyncThunk(
   }
 );
 
-export const fetchAllTaskByUser = createAsyncThunk(
-  "data/fetchGroup",
-  async (id: string | number, thuncAPI) => {
+export const fetchCreateNewGroup = createAsyncThunk(
+  "data/fetchCreateGroup",
+  async (req: requestJsonCreateNewGroup, thuncAPI) => {
     try {
-      const response = await axios.get(
-        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}/${id}`
+      const response = await axios.post<requestJsonCreateNewGroup>(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`,
+        req
       );
+      console.log(response.data)
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);

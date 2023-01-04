@@ -23,7 +23,7 @@
 }
 
 .newGroupForm>button {
-    background-color: green;
+    background-color: #357960;
     border-radius: 5px;
     width: 90%;
     height: 25px;
@@ -39,10 +39,22 @@
     font-weight: bold;
 }
 
-button.font {
+button.font, .error.font {
     color: white;
 }
 
 input.font {  
     color: black;   
+}
+
+
+.error {
+    background-color: #f5625d;
+    border-radius: 5px;
+    width: 90%;
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

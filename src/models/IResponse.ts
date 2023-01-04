@@ -16,3 +16,10 @@ export interface responseJsonSignUp {
   message: string;
   status: boolean;
 }
+
+export interface responseJsonCreateNewGroup {
+  userId: string;
+  name: string | number;
+  id: string | number;
+  status: boolean;
+}
