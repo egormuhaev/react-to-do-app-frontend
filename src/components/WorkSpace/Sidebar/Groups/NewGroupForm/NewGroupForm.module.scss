@@ -1,0 +1,48 @@
+.newGroupForm {
+    width: 90%;
+    min-height: auto;
+    border: 2px white solid;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+}
+
+.newGroupForm>input {
+    width: auto;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.newGroupForm>button {
+    background-color: green;
+    border-radius: 5px;
+    width: 90%;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.font {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button.font {
+    color: white;
+}
+
+input.font {  
+    color: black;   
+}

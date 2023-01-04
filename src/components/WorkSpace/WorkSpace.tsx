@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import { useAppDispatch, useAppSelector } from "../../hook/redux";
 import { fetchAllGroupsByUser } from "../../store/reducers/ActionCreator";
 import { mainAppSlice } from "../../store/reducers/MainAppSlice";
+
 const WorkSpace = () => {
   const { id } = useAppSelector((state) => state.mainAppReducer.userData);
   const dispatch = useAppDispatch();
@@ -30,8 +31,9 @@ const WorkSpace = () => {
   }, []);
 
   return (
-    <div className="h-[100vh] w-[100%]">
+    <div className="h-[100vh] w-[100%] flex flex-row justify-center">
       <SideBar />
+      <Header />
     </div>
   );
 };

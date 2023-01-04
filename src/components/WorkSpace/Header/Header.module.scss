@@ -1,0 +1,15 @@
+.wrapper {
+    height: 105px;
+    width: 100%;
+    background-color: #3182B9;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+}
+
+.wrapper>p {
+    margin-left: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}

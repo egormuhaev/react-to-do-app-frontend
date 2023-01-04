@@ -24,8 +24,27 @@ export interface IStateMainApp {
     username: string;
     password: string;
   };
+
+  header: {
+    text: string;
+  };
+
+  activeSection: {
+    today: boolean;
+    important: boolean;
+    all: boolean;
+    planned: boolean;
+    tasks: boolean;
+    group: boolean;
+    dashboard: boolean;
+  };
+
   group: {
-    selectGroup: string | number,
+    createGroup: {
+      newGroupName: string;
+      status: boolean;
+    };
+    selectGroup: string | number;
     groupAll: IGroup[];
   };
 

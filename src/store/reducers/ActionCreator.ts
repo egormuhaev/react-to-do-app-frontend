@@ -48,3 +48,17 @@ export const fetchAllGroupsByUser = createAsyncThunk(
     }
   }
 );
+
+export const fetchAllTaskByUser = createAsyncThunk(
+  "data/fetchGroup",
+  async (id: string | number, thuncAPI) => {
+    try {
+      const response = await axios.get(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}/${id}`
+      );
+      return response.data;
+    } catch (e: any) {
+      return thuncAPI.rejectWithValue(e.message);
+    }
+  }
+);
