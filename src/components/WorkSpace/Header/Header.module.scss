@@ -1,7 +1,8 @@
 .wrapper {
-    height: 105px;
-    width: 100%;
-    background-color: #3182B9;
+    height: 50px;
+    width: 95%;
+    margin: 10px;
+    background-color: #181816;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -10,6 +11,6 @@
 
 .wrapper>p {
     margin-left: 50px;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: bold;
 }

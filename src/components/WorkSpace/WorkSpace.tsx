@@ -31,7 +31,7 @@ const WorkSpace = () => {
   }, []);
 
   return (
-    <div className="h-[100vh] w-[100%] flex flex-row justify-center">
+    <div className="h-[100vh] w-[100%] flex flex-row justify-center bg-[#e4e4e4]">
       <SideBar />
       <Header />
     </div>

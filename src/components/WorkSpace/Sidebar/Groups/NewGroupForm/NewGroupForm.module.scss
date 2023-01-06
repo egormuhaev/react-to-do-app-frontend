@@ -1,3 +1,4 @@
+
 .newGroupForm {
     width: 90%;
     min-height: auto;
@@ -8,18 +9,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #1c1c1a;
     border-radius: 10px;
 }
 
 .newGroupForm>input {
+    outline:none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #1c1c1a;
     width: auto;
     height: 30px;
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
-    border-radius: 5px;
 }
 
 .newGroupForm>button {

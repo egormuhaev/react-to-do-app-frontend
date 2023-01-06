@@ -1,26 +1,24 @@
 .item {
     width: 90%;
     min-height: 40px;
-    border: 2px white solid;
     margin-top: 3px;
     margin-bottom: 3px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    color: white;
-    border-radius: 10px;
+    color: #1c1c1a;
 }
 
 .item:hover {
-    background-color: white;
-    color: #3182B9;
+    background-color: #f47c02;
+    color: #1c1c1a;
 }
 
 .item.active {
-    width: 95%;
-    background-color: white;
-    color: #3182B9;
+    width: 100%;
+    background-color: #f47c02;
+    color: #fff;
 }
 
 .item>p {

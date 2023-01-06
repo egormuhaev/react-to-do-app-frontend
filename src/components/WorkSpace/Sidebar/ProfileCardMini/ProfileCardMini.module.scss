@@ -23,20 +23,20 @@
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    // background: linear-gradient(#FFEB70, #F02262);
     background-color: #dbdbdb;
-    border: 2px white solid;
+    border: 2px #1c1c1a solid;
 }
 
 .avatar>.font {
-    color: white;
+    color: #1c1c1a;
     text-align: center;
     font-size: 50px;
     font-weight: bold;
 }
 
 .prifileInfo>.font {
-    color: white;
+    margin-left: 10px;
+    color: #1c1c1a;
     font-size: 20px;
     font-weight: bold;
 }

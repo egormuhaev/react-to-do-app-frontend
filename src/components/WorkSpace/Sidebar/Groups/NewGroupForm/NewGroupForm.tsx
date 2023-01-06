@@ -37,6 +37,7 @@ const NewGroupForm = () => {
   return (
     <div className={style.newGroupForm}>
       <input
+        placeholder="Name group"
         className={style.font}
         type="text"
         value={newGroupName}
