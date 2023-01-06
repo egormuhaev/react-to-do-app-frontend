@@ -7,6 +7,8 @@ const Header = () => {
   return (
     <div className={style.wrapper}>
       <p>{text}</p>
+
+      <div className={style.defaultDiv}></div>
     </div>
   );
 };

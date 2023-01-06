@@ -1,6 +1,6 @@
 .wrapper {
     margin-top: 10px;
-    max-height: calc(100vh - 400px);
+    max-height: calc(100vh - 420px);
     overflow: auto;
     width: 100%;
     display: flex;
@@ -9,10 +9,10 @@
 }
 
 .wrapper::-webkit-scrollbar {
-    width: 2px;               /* ширина всей полосы прокрутки */
+    width: 2px;               
   }
   
 .wrapper::-webkit-scrollbar-track {
-    background: none;        /* цвет зоны отслеживания */
+    background: none;        
   }
 

@@ -1,8 +1,11 @@
 .sidebarWrapper {
     background-color: #ffffff;
     width: 250px;
-    height: 100vh;
+    height: calc(100vh - 20px);
     user-select: none;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 .center {
