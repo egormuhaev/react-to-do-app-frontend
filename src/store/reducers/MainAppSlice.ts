@@ -14,7 +14,7 @@ const initialState: IStateMainApp = {
   },
 
   header: {
-    text: "",
+    text: "Dashboard",
   },
 
   activeSection: {
