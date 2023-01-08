@@ -4,9 +4,14 @@ import Header from "./Header/Header";
 import { useAppDispatch, useAppSelector } from "../../hook/redux";
 import { fetchAllGroupsByUser } from "../../store/reducers/ActionCreator";
 import { mainAppSlice } from "../../store/reducers/MainAppSlice";
+import ModalRenameGroup from "./Header/HeaderByGroup/ModalRenameGroup/ModalRenameGroup";
 
 const WorkSpace = () => {
   const { id } = useAppSelector((state) => state.mainAppReducer.userData);
+  const { renameGroup } = useAppSelector((state) => state.mainAppReducer.group);
+  const { group } = useAppSelector(
+    (state) => state.mainAppReducer.activeSection
+  );
   const dispatch = useAppDispatch();
   const { setUserData } = mainAppSlice.actions;
 
@@ -34,6 +39,7 @@ const WorkSpace = () => {
     <div className="h-[100vh] w-[100%] flex flex-row justify-center bg-[#e4e4e4]">
       <SideBar />
       <Header />
+      {renameGroup.status && group && <ModalRenameGroup />}
     </div>
   );
 };

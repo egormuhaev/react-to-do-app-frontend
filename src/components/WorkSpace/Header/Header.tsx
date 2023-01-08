@@ -5,10 +5,14 @@ import HeaderByGroup from "./HeaderByGroup/HeaderByGroup";
 
 const Header = () => {
   const { text } = useAppSelector((state) => state.mainAppReducer.header);
+  const { group } = useAppSelector(
+    (state) => state.mainAppReducer.activeSection
+  );
   return (
     <div className={style.wrapper}>
       <p>{text}</p>
-      <HeaderByGroup />
+      {group && <HeaderByGroup />}
+      <div className={style.defaultDiv}></div>
     </div>
   );
 };

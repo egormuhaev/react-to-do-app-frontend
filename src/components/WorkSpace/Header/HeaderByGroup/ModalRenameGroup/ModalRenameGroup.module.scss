@@ -1,0 +1,82 @@
+.modalWrapper {
+    position: absolute;
+    margin: auto;
+    top: 0; left: 0; bottom: 0; right: 0;
+    height: 200px;
+    width: 300px;
+    background-color: #181816;
+    z-index: 99999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nameAction {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    width: 95%;
+    border-bottom: 1px solid #ffffff;
+}
+
+.nameAction>p, .inputModal>p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.inputModal>input {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff; 
+    width: 100%;
+    outline: none;
+    background-color: #181816;
+}
+
+.inputModal>p {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.btnModal {
+    height: 50px;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btnModal>button {
+    border: 1px solid #e4e4e4;
+    height: 20px;
+    width: 100px;
+    background-color: #ffffff;
+    color: #181816;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnModal>button:hover {
+    background-color: #f47c02;
+}
+
+.inputModal {
+    padding: 5px;
+    height: 100%;
+    width: 95%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+

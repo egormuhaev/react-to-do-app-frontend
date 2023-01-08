@@ -40,6 +40,11 @@ export interface IStateMainApp {
   };
 
   group: {
+    renameGroup: {
+      status: boolean;
+      name: string;
+      id: string | number;
+    };
     createGroup: {
       newGroupName: string;
       status: boolean;

@@ -10,7 +10,7 @@ const Groups = () => {
     (state) => state.mainAppReducer.group.createGroup
   );
   const groupsItems = groups.map((element) => (
-    <GroupItem key={element.id} id={element.id} text={element.name} />
+    <GroupItem id={element.id} text={element.name} />
   ));
   return (
     <div className={style.wrapper}>

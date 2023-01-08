@@ -23,3 +23,8 @@ export interface responseJsonCreateNewGroup {
   id: string | number;
   status: boolean;
 }
+
+export interface responseJsonRenameGroup {
+  id: string | number;
+  name: string;
+}

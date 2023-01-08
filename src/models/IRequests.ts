@@ -13,3 +13,8 @@ export interface requestJsonCreateNewGroup {
   userId: string;
   nameGroup: string;
 }
+
+export interface requersJsonRenameGroup {
+  newGroupName: string;
+  id: string | number;
+}

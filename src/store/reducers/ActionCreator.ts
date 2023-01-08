@@ -6,11 +6,13 @@ import {
   requersJsonSignIn,
   requestJsonSignUp,
   requestJsonCreateNewGroup,
+  requersJsonRenameGroup,
 } from "../../models/IRequests";
 import {
   responseJsonSignIn,
   responseJsonSignUp,
   responseJsonCreateNewGroup,
+  responseJsonRenameGroup,
 } from "../../models/IResponse";
 
 export const fetchSignInUsers = createAsyncThunk(
@@ -65,7 +67,23 @@ export const fetchCreateNewGroup = createAsyncThunk(
         `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`,
         req
       );
-      console.log(response.data)
+      console.log(response.data);
+      return response.data;
+    } catch (e: any) {
+      return thuncAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchRenameGroup = createAsyncThunk(
+  "data/fetchRenameGroup",
+  async (req: requersJsonRenameGroup, thuncAPI) => {
+    try {
+      const response = await axios.put<requersJsonRenameGroup>(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`,
+        req
+      );
+      console.log(response.data);
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);

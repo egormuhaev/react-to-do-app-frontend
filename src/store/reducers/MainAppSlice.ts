@@ -1,7 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMainUserData } from "../../models/IMainUserData";
 import { IStateMainApp } from "../../models/IStateMainApp";
-import { fetchAllGroupsByUser, fetchCreateNewGroup } from "./ActionCreator";
+import {
+  fetchAllGroupsByUser,
+  fetchCreateNewGroup,
+  fetchRenameGroup,
+} from "./ActionCreator";
 import { IGroup } from "../../models/IStateMainApp";
 import { responseJsonCreateNewGroup } from "../../models/IResponse";
 
@@ -28,6 +32,11 @@ const initialState: IStateMainApp = {
   },
 
   group: {
+    renameGroup: {
+      status: false,
+      name: "",
+      id: -1,
+    },
     createGroup: {
       newGroupName: "",
       status: false,
@@ -45,7 +54,9 @@ export const mainAppSlice = createSlice({
   initialState,
   reducers: {
     setNewGroupName(state, action: PayloadAction<string>) {
-      state.group.createGroup.newGroupName = action.payload;
+      if (!(state.group.createGroup.newGroupName.length === 17)) {
+        state.group.createGroup.newGroupName = action.payload;
+      }
     },
     setCreateNewGroup(state, action: PayloadAction<boolean>) {
       state.group.createGroup.status = action.payload;
@@ -71,6 +82,22 @@ export const mainAppSlice = createSlice({
     },
     setUserData(state, action: PayloadAction<IMainUserData>) {
       state.userData = action.payload;
+    },
+
+    setRenameGroupStatus(state, action: PayloadAction<boolean>) {
+      state.group.renameGroup.status = action.payload;
+    },
+
+    setRenameGroupName(state, action: PayloadAction<string>) {
+      if (!(state.group.renameGroup.name.length === 17)) {
+        state.group.renameGroup.name = action.payload;
+      }
+    },
+
+    setRenameGroupId(state, action: PayloadAction<string | number>) {
+      if (!(state.group.renameGroup.name.length === 17)) {
+        state.group.renameGroup.id = action.payload;
+      }
     },
   },
   extraReducers: {
@@ -125,6 +152,24 @@ export const mainAppSlice = createSlice({
     },
     [fetchAllGroupsByUser.pending.type]: (state) => {},
     [fetchAllGroupsByUser.rejected.type]: (state, action: PayloadAction) => {},
+
+    [fetchRenameGroup.fulfilled.type]: (state, action: PayloadAction<any>) => {
+      state.group.groupAll = [
+        ...state.group.groupAll.map((element) => {
+          if (element.id === action.payload[0].id) {
+            element.name = action.payload[0].name as string | undefined;
+          }
+          return element;
+        }),
+      ];
+
+      state.group.renameGroup = { id: -1, name: "", status: false };
+    },
+    [fetchRenameGroup.pending.type]: (state) => {},
+    [fetchRenameGroup.rejected.type]: (
+      state,
+      action: PayloadAction<string>
+    ) => {},
   },
 });
 
