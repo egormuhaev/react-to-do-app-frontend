@@ -12,7 +12,7 @@ const ModalRenameGroup = () => {
     mainAppSlice.actions;
   const dispatch = useAppDispatch();
 
-  const oldNameGroup = groupAll.filter((el) => (el.id === renameGroup.id));
+  const oldNameGroup = groupAll.filter((el) => el.id === renameGroup.id);
 
   return (
     <div className={style.modalWrapper}>

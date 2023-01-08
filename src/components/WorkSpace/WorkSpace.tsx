@@ -38,7 +38,9 @@ const WorkSpace = () => {
   return (
     <div className="h-[100vh] w-[100%] flex flex-row justify-center bg-[#e4e4e4]">
       <SideBar />
-      <Header />
+      <div className="w-[95%] bg-red-800 m-[10px]">
+        <Header />
+      </div>
       {renameGroup.status && group && <ModalRenameGroup />}
     </div>
   );
