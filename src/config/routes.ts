@@ -6,4 +6,5 @@ export const routes = {
   VALIDATION_PASSWORD: "/user/validation/password",
   VALIDATION_USERNAME: "/user/validation/username",
   GROUP_MAIN: "/group",
+  TASK_MAIN: "/task",
 };

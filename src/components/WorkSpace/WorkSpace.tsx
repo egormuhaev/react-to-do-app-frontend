@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hook/redux";
 import { fetchAllGroupsByUser } from "../../store/reducers/ActionCreator";
 import { mainAppSlice } from "../../store/reducers/MainAppSlice";
 import ModalRenameGroup from "./Header/HeaderByGroup/ModalRenameGroup/ModalRenameGroup";
+import ContentWrapper from "./ContentWrapper/ContentWrapper";
 
 const WorkSpace = () => {
   const { id } = useAppSelector((state) => state.mainAppReducer.userData);
@@ -33,13 +34,14 @@ const WorkSpace = () => {
     } else {
       dispatch(fetchAllGroupsByUser(id));
     }
-  }, []);
+  });
 
   return (
     <div className="h-[100vh] w-[100%] flex flex-row justify-center bg-[#e4e4e4]">
       <SideBar />
-      <div className="w-[95%] bg-red-800 m-[10px]">
+      <div className="w-[95%] m-[10px] flex flex-col justify-start">
         <Header />
+        <ContentWrapper />
       </div>
       {renameGroup.status && group && <ModalRenameGroup />}
     </div>

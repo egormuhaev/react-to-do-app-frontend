@@ -39,6 +39,10 @@ export interface IStateMainApp {
     dashboard: boolean;
   };
 
+  task: {
+    taskAll: ITask[];
+  };
+
   group: {
     renameGroup: {
       status: boolean;
@@ -54,6 +58,4 @@ export interface IStateMainApp {
     selectGroup: string | number;
     groupAll: IGroup[];
   };
-
-  task: ITask[];
 }

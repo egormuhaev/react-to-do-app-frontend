@@ -5,6 +5,7 @@ import {
   fetchAllGroupsByUser,
   fetchCreateNewGroup,
   fetchRenameGroup,
+  fetchAllTaskByUser,
 } from "./ActionCreator";
 import { IGroup } from "../../models/IStateMainApp";
 import { responseJsonCreateNewGroup } from "../../models/IResponse";
@@ -31,6 +32,10 @@ const initialState: IStateMainApp = {
     dashboard: true,
   },
 
+  task: {
+    taskAll: [],
+  },
+
   group: {
     renameGroup: {
       status: false,
@@ -46,7 +51,6 @@ const initialState: IStateMainApp = {
     selectGroup: -1,
     groupAll: [],
   },
-  task: [],
 };
 
 export const mainAppSlice = createSlice({
@@ -170,6 +174,10 @@ export const mainAppSlice = createSlice({
       state,
       action: PayloadAction<string>
     ) => {},
+
+    [fetchAllTaskByUser.fulfilled.type]: (state) => {},
+    [fetchAllTaskByUser.pending.type]: (state) => {},
+    [fetchAllTaskByUser.fulfilled.type]: (state) => {},
   },
 });
 

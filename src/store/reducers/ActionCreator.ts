@@ -8,12 +8,7 @@ import {
   requestJsonCreateNewGroup,
   requersJsonRenameGroup,
 } from "../../models/IRequests";
-import {
-  responseJsonSignIn,
-  responseJsonSignUp,
-  responseJsonCreateNewGroup,
-  responseJsonRenameGroup,
-} from "../../models/IResponse";
+import { responseJsonSignIn, responseJsonSignUp } from "../../models/IResponse";
 
 export const fetchSignInUsers = createAsyncThunk(
   "data/fetchSignIn",
@@ -84,6 +79,20 @@ export const fetchRenameGroup = createAsyncThunk(
         req
       );
       console.log(response.data);
+      return response.data;
+    } catch (e: any) {
+      return thuncAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchAllTaskByUser = createAsyncThunk(
+  "data/fetchAllTask",
+  async (id: string | number, thuncAPI) => {
+    try {
+      const response = await axios.get<any>(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`
+      );
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);
