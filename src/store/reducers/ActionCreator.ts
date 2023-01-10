@@ -90,9 +90,10 @@ export const fetchAllTaskByUser = createAsyncThunk(
   "data/fetchAllTask",
   async (id: string | number, thuncAPI) => {
     try {
-      const response = await axios.get<any>(
-        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`
+      const response = await axios.get(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.TASK_MAIN}/${id}`
       );
+      console.log(response.data);
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);

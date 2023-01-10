@@ -7,7 +7,7 @@ import {
   fetchRenameGroup,
   fetchAllTaskByUser,
 } from "./ActionCreator";
-import { IGroup } from "../../models/IStateMainApp";
+import { IGroup, ITask } from "../../models/IStateMainApp";
 import { responseJsonCreateNewGroup } from "../../models/IResponse";
 
 const initialState: IStateMainApp = {
@@ -155,7 +155,7 @@ export const mainAppSlice = createSlice({
       }
     },
     [fetchAllGroupsByUser.pending.type]: (state) => {},
-    [fetchAllGroupsByUser.rejected.type]: (state, action: PayloadAction) => {},
+    [fetchAllGroupsByUser.rejected.type]: (state) => {},
 
     [fetchRenameGroup.fulfilled.type]: (state, action: PayloadAction<any>) => {
       state.group.groupAll = [
@@ -175,9 +175,29 @@ export const mainAppSlice = createSlice({
       action: PayloadAction<string>
     ) => {},
 
-    [fetchAllTaskByUser.fulfilled.type]: (state) => {},
+    [fetchAllTaskByUser.fulfilled.type]: (
+      state,
+      action: PayloadAction<ITask[]>
+    ) => {
+      const tasks: ITask[] = [...action.payload];
+      state.task.taskAll = [];
+      for (let i = 0; i < tasks.length; i++) {
+        state.task.taskAll.push({
+          id: tasks[i].id,
+          name: tasks[i].name as string,
+          description: tasks[i].description,
+          deadline: tasks[i].deadline,
+          notification: tasks[i].notification,
+          tags: tasks[i].tags,
+          important: tasks[i].important,
+          status: tasks[i].status,
+          group_id: tasks[i].group_id,
+          user_id: tasks[i].user_id,
+        });
+      }
+    },
     [fetchAllTaskByUser.pending.type]: (state) => {},
-    [fetchAllTaskByUser.fulfilled.type]: (state) => {},
+    [fetchAllTaskByUser.rejected.type]: (state) => {},
   },
 });
 

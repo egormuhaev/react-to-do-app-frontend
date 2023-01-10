@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import SideBar from "./Sidebar/SideBar";
 import Header from "./Header/Header";
 import { useAppDispatch, useAppSelector } from "../../hook/redux";
-import { fetchAllGroupsByUser } from "../../store/reducers/ActionCreator";
+import {
+  fetchAllGroupsByUser,
+  fetchAllTaskByUser,
+} from "../../store/reducers/ActionCreator";
 import { mainAppSlice } from "../../store/reducers/MainAppSlice";
 import ModalRenameGroup from "./Header/HeaderByGroup/ModalRenameGroup/ModalRenameGroup";
 import ContentWrapper from "./ContentWrapper/ContentWrapper";
@@ -33,6 +36,27 @@ const WorkSpace = () => {
       );
     } else {
       dispatch(fetchAllGroupsByUser(id));
+    }
+  });
+
+  useEffect(() => {
+    if (id === "") {
+      dispatch(
+        setUserData({
+          id: localStorage.getItem("id_to_do_app") as string | number,
+          email: localStorage.getItem("email_to_do_app") as string,
+          username: localStorage.getItem("username_to_do_app") as string,
+          password: localStorage.getItem("password_to_do_app") as string,
+        })
+      );
+
+      dispatch(
+        fetchAllTaskByUser(
+          localStorage.getItem("id_to_do_app") as string | number
+        )
+      );
+    } else {
+      dispatch(fetchAllTaskByUser(id));
     }
   });
 
