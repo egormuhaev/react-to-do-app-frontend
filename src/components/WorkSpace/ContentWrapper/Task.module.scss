@@ -1,9 +1,19 @@
 .wrapper {
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: #ffffff;
 }
 
 .task {
-
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: auto;
+    height: 50px;
+    color: black;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
