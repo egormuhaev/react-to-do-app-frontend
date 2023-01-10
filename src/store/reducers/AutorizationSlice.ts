@@ -136,7 +136,7 @@ export const autorizationSlice = createSlice({
           password: action.payload.password,
           username: action.payload.username,
         };
-        console.log(state.successUserData);
+     
       } else {
         state.signUp.isLoading = { status: false, textBtn: "Create" };
         state.signUp.warring = {
@@ -186,7 +186,7 @@ export const autorizationSlice = createSlice({
           message: action.payload.message,
         };
       } else {
-        console.log(action.payload.message);
+      
         state.signIn.warring = { status: false, message: "" };
         state.successUserData = {
           id: action.payload.id,
@@ -194,7 +194,7 @@ export const autorizationSlice = createSlice({
           password: action.payload.password,
           username: action.payload.username,
         };
-        console.log(state.successUserData);
+   
       }
     },
     [fetchSignInUsers.rejected.type]: (

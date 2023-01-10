@@ -40,19 +40,19 @@ export const fetchSignUpNewUsers = createAsyncThunk(
   }
 );
 
-export const fetchAllGroupsByUser = createAsyncThunk(
-  "data/fetchGroup",
-  async (id: string | number, thuncAPI) => {
-    try {
-      const response = await axios.get(
-        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}/${id}`
-      );
-      return response.data;
-    } catch (e: any) {
-      return thuncAPI.rejectWithValue(e.message);
-    }
-  }
-);
+// export const fetchAllGroupsByUser = createAsyncThunk(
+//   "data/fetchGroup",
+//   async (id: string | number, thuncAPI) => {
+//     try {
+//       const response = await axios.get(
+//         `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}/${id}`
+//       );
+//       return response.data;
+//     } catch (e: any) {
+//       return thuncAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 
 export const fetchCreateNewGroup = createAsyncThunk(
   "data/fetchCreateGroup",
@@ -62,7 +62,6 @@ export const fetchCreateNewGroup = createAsyncThunk(
         `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`,
         req
       );
-      console.log(response.data);
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);
@@ -78,7 +77,6 @@ export const fetchRenameGroup = createAsyncThunk(
         `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}`,
         req
       );
-      console.log(response.data);
       return response.data;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);
@@ -86,15 +84,35 @@ export const fetchRenameGroup = createAsyncThunk(
   }
 );
 
-export const fetchAllTaskByUser = createAsyncThunk(
-  "data/fetchAllTask",
+// export const fetchAllTaskByUser = createAsyncThunk(
+//   "data/fetchAllTask",
+//   async (id: string | number, thuncAPI) => {
+//     try {
+//       const response = await axios.get(
+//         `${config.BASE_API}${routes.BASE_RUOTE}${routes.TASK_MAIN}/${id}`
+//       );
+
+//       return response.data;
+//     } catch (e: any) {
+//       return thuncAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
+
+export const fetchAllDataByUser = createAsyncThunk(
+  "data/fetchAll",
   async (id: string | number, thuncAPI) => {
     try {
-      const response = await axios.get(
+      const responseGroup = await axios.get(
+        `${config.BASE_API}${routes.BASE_RUOTE}${routes.GROUP_MAIN}/${id}`
+      );
+
+      const responseTask = await axios.get(
         `${config.BASE_API}${routes.BASE_RUOTE}${routes.TASK_MAIN}/${id}`
       );
-      console.log(response.data);
-      return response.data;
+      const ret = { task: responseTask.data, group: responseGroup.data };
+
+      return ret;
     } catch (e: any) {
       return thuncAPI.rejectWithValue(e.message);
     }

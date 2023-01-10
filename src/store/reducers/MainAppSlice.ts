@@ -2,10 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IMainUserData } from "../../models/IMainUserData";
 import { IStateMainApp } from "../../models/IStateMainApp";
 import {
-  fetchAllGroupsByUser,
   fetchCreateNewGroup,
   fetchRenameGroup,
-  fetchAllTaskByUser,
+  fetchAllDataByUser,
 } from "./ActionCreator";
 import { IGroup, ITask } from "../../models/IStateMainApp";
 import { responseJsonCreateNewGroup } from "../../models/IResponse";
@@ -134,28 +133,9 @@ export const mainAppSlice = createSlice({
       state,
       action: PayloadAction<string>
     ) => {
-      console.log(1);
-      console.log(action.payload);
       state.group.createGroup.errorMessage = action.payload;
       state.group.createGroup.errorStatus = true;
     },
-
-    [fetchAllGroupsByUser.fulfilled.type]: (
-      state,
-      action: PayloadAction<IGroup[]>
-    ) => {
-      const groups: IGroup[] = [...action.payload];
-      state.group.groupAll = [];
-      for (let i = 0; i < groups.length; i++) {
-        state.group.groupAll.push({
-          id: groups[i].id,
-          name: groups[i].name,
-          user_id: groups[i].user_id,
-        });
-      }
-    },
-    [fetchAllGroupsByUser.pending.type]: (state) => {},
-    [fetchAllGroupsByUser.rejected.type]: (state) => {},
 
     [fetchRenameGroup.fulfilled.type]: (state, action: PayloadAction<any>) => {
       state.group.groupAll = [
@@ -175,29 +155,15 @@ export const mainAppSlice = createSlice({
       action: PayloadAction<string>
     ) => {},
 
-    [fetchAllTaskByUser.fulfilled.type]: (
+    [fetchAllDataByUser.fulfilled.type]: (
       state,
-      action: PayloadAction<ITask[]>
+      action: PayloadAction<{ task: ITask[]; group: IGroup[] }>
     ) => {
-      const tasks: ITask[] = [...action.payload];
-      state.task.taskAll = [];
-      for (let i = 0; i < tasks.length; i++) {
-        state.task.taskAll.push({
-          id: tasks[i].id,
-          name: tasks[i].name as string,
-          description: tasks[i].description,
-          deadline: tasks[i].deadline,
-          notification: tasks[i].notification,
-          tags: tasks[i].tags,
-          important: tasks[i].important,
-          status: tasks[i].status,
-          group_id: tasks[i].group_id,
-          user_id: tasks[i].user_id,
-        });
-      }
+      state.group.groupAll = [...action.payload.group];
+      state.task.taskAll = [...action.payload.task];
     },
-    [fetchAllTaskByUser.pending.type]: (state) => {},
-    [fetchAllTaskByUser.rejected.type]: (state) => {},
+    [fetchAllDataByUser.pending.type]: (state) => {},
+    [fetchAllDataByUser.rejected.type]: (state) => {},
   },
 });
 
